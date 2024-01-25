@@ -1,0 +1,22 @@
+# Node.js
+node_modules/
+
+# Cypress generated files
+/cypress/videos/
+/cypress/screenshots/
+
+# Cypress configuration
+/cypress.env.json
+
+# TypeScript generated files
+/tsconfig.json
+/tsconfig.tsbuildinfo
+
+# Visual Studio Code settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
