@@ -28,7 +28,7 @@ jobs:
               CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
           
           - name: Save Mochawesome Report
-                run: |
+                run:
                   npx mochawesome-merge cypress/results/*.json > merged-report.json
                   npx marge merged-report.json --reportDir cypress/reports
                   mv cypress/reports/mochawesome.html cypress/reports/mochawesome-$(date +'%Y%m%d%H%M%S').html
