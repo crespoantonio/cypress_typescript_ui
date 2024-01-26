@@ -3,7 +3,7 @@
 import { homePage } from "../pages/home.page";
 import { myAccountPage } from "../pages/myAccount.page";
 
-describe.only('MY ACCOUNT - LOGIN', function(){
+describe('MY ACCOUNT - LOGIN', function(){
     beforeEach(function(){
         cy.visit('/');
         homePage.clickMyAccountMenu();
