@@ -8,6 +8,12 @@ export default defineConfig({
   viewportHeight: 768,
   defaultCommandTimeout: 8000,
   reporter: 'mochawesome',
+  reporterOptions: {
+    "reportDir": "cypress/results",
+    "overwrite": false,
+    "html": false,
+    "json": true
+  },
   e2e: {
     baseUrl: 'https://practice.automationtesting.in/',
     setupNodeEvents(on, config) {

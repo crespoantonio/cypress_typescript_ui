@@ -6,23 +6,30 @@ on:
       - cicdconfiguration
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+      build:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+        steps:
+          - name: Checkout Repository
+            uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
+          - name: Set up Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: 14
 
-      - name: Install Dependencies
-        run: npm install
+          - name: Install Dependencies
+            run: npm install
 
-      - name: Run Tests
-        run: npm run cypress:run
-        env:
-          CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
-          CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+          - name: Run Tests
+            run: npm run cypress:run
+            env:
+              CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
+              CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
+          
+          - name: Save Mochawesome Report
+                run: |
+                  npx mochawesome-merge cypress/results/*.json > merged-report.json
+                  npx marge merged-report.json --reportDir cypress/reports
+                  mv cypress/reports/mochawesome.html cypress/reports/mochawesome-$(date +'%Y%m%d%H%M%S').html
+                if: always()
