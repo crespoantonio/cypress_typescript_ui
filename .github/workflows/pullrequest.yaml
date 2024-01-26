@@ -21,15 +21,11 @@ jobs:
           - name: Install Dependencies
             run: npm install
 
+          - name: Write the cypress.env.json file 📝
+            # use quotes around the secret, as its value
+            # is simply inserted as a string into the command
+            run: |
+              echo '${{ secrets.CYPRESS_ENV }}' > cypress.env.json
+
           - name: Run Tests
             run: npm run cypress:run
-            env:
-              CYPRESS_USERNAME: ${{ secrets.CYPRESS_USERNAME }}
-              CYPRESS_PASSWORD: ${{ secrets.CYPRESS_PASSWORD }}
-          
-          - name: Save Mochawesome Report
-            run: |
-              npx mochawesome-merge cypress/results/*.json > merged-report.json
-              npx marge merged-report.json --reportDir cypress/reports
-              mv cypress/reports/mochawesome.html cypress/reports/mochawesome-$(date +'%Y%m%d%H%M%S').html
-            if: always()

@@ -2,15 +2,10 @@
 
 import { homePage } from "../pages/home.page";
 import { myAccountPage } from "../pages/myAccount.page";
-declare var process: {
-    env:{
-        CYPRESS_USERNAME:string;
-        CYPRESS_PASSWORD:string
-    }
-}
+
 describe('MY ACCOUNT - LOGIN', function(){
-    const username:string = process.env.CYPRESS_USERNAME || Cypress.env('username');
-    const password:string = process.env.CYPRESS_PASSWORD || Cypress.env('password');
+    const username:string = Cypress.env('username');
+    const password:string = Cypress.env('password');
     beforeEach(function(){
         cy.visit('/');
         homePage.clickMyAccountMenu();
