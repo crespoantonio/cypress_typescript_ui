@@ -18,7 +18,7 @@ describe('Home Page', function() {
         homePage.getAllNewArrivals().should('have.length', 3);
     });
 
-    it.only('Images in arrivals should navigate', function() {
+    it('Images in arrivals should navigate', function() {
         const imageNumber: number = Math.floor(Math.random() * 3) + 1;
         homePage.getAllNewArrivals().should('have.length', 3);
         homePage.getOneImageInArrivals(imageNumber).click();

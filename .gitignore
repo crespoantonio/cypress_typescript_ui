@@ -8,10 +8,6 @@ node_modules/
 # Cypress configuration
 /cypress.env.json
 
-# TypeScript generated files
-/tsconfig.json
-/tsconfig.tsbuildinfo
-
 # Visual Studio Code settings
 .vscode/
 
