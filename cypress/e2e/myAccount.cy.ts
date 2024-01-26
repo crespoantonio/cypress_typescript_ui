@@ -10,7 +10,7 @@ describe('MY ACCOUNT - LOGIN', function(){
         cy.visit('/');
         homePage.clickMyAccountMenu();
     })
-    it('Login with valir username and password',function(){
+    it('Login with valid username and password',function(){
         myAccountPage.logIn(username, password);
         myAccountPage.loginMessageWelcome().should('exist').and('include.text', 'tonytest');
     })
