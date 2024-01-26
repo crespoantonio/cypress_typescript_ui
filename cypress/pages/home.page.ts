@@ -14,6 +14,10 @@ export class HomePage {
         this.menuShopLink().click();
     }
 
+    clickMyAccountMenu():void {
+        this.menuMyAccountLink().click();
+    }
+
     getAllSlides() {
         return this.slideMenu().find('>div');
     }
