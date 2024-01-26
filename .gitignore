@@ -20,3 +20,6 @@ node_modules/
 
 # Windows
 Thumbs.db
+
+#Reports
+/mochawesome-report
