@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.4.0",
     "cypress": "^13.6.3",
     "mochawesome": "^7.1.3",
     "mochawesome-report-generator": "^6.2.0",
