@@ -79,13 +79,13 @@
 7) Registration must fail with a warning message(ie please enter an account password)
 
 ## Shop
-### Filter by price
+### Filter by price between 280 and 428
 1) Open the browser
 2) Enter the URL “http://practice.automationtesting.in/”
 3) Click on Shop Menu
-4) Adjust the filter by price between 150 to 450 rps
+4) Adjust the filter by price between 280 to 428 rps
 5) Now click on Filter button
-6) User can view books only between 150 to 450 rps price
+6) User can view books only between 280 to 428 rps price
 
 ### Product category functionality
 1) Open the browser
