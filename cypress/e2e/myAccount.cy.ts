@@ -17,7 +17,7 @@ describe('MY ACCOUNT - LOGIN', function(){
     it('Login with incorrect username and incorrect password', function(){
         myAccountPage.logIn('prueba', 'prueba');
         myAccountPage.loginMessageWelcome().should('not.exist');
-        myAccountPage.loginMessageError().should('exist').and('be.visible');
+        myAccountPage.messageError().should('exist').and('be.visible');
         myAccountPage.loginSection().should('exist').and('be.visible');
     })
     it('Password should be masked', function(){

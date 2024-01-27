@@ -1,4 +1,5 @@
 ///<reference types="cypress"/>
+
 import { homePage } from "../pages/home.page";
 import { shopPage } from "../pages/shop.page";
 import { productPage } from "../pages/product.page";
