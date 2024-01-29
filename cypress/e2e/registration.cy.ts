@@ -14,18 +14,18 @@ describe('MY ACCOUNT - REGISTRATION', function(){
     it('Sign in', function(){
         const user:IUserInfo = helpers.createsNewUser();
         myAccountPage.registerNewUser(user.email, user.password);
-        myAccountPage.loginMessageWelcome().should('exist').and('include.text', `${user.name}.${user.lastname}`);
+        myAccountPage.getLogInMesageWelcome().should('exist').and('include.text', `${user.name}.${user.lastname}`);
     })
 
     it('Registration with invalid email', function(){
         const user:IUserInfo = helpers.createsNewUser();
         myAccountPage.registerNewUser(`${user.name}@lamd`, user.password);
-        myAccountPage.messageError().should('exist').and('include.text', 'Error: Please provide a valid email address.');
+        myAccountPage.getErrorMessage().should('exist').and('include.text', 'Error: Please provide a valid email address.');
     })
 
     it('Registration with empty password', function(){
         const user:IUserInfo = helpers.createsNewUser();
         myAccountPage.registerNewUser(user.email, null);
-        myAccountPage.messageError().should('exist').and('include.text', 'Error: Please enter an account password.');
+        myAccountPage.getErrorMessage().should('exist').and('include.text', 'Error: Please enter an account password.');
     })
 })

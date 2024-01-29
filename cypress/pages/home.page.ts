@@ -1,14 +1,14 @@
 export class HomePage {
-    menuShopLink() { return cy.get('#menu-item-40'); }
-    menuMyAccountLink() { return cy.get('#menu-item-50'); }
-    menuTestCasesLink() { return cy.get('#menu-item-224'); }
-    menuAtSitesLink() { return cy.get('#menu-item-244'); }
-    menuDemoSitesLink() { return cy.get('#menu-item-251'); }
-    menuCartLink() { return cy.get('#wpmenucartli'); }
-    slideMenu() { return cy.get('.n2-ss-slider-3'); }
-    slideMenuButtonNext() { return cy.get('#n2-ss-6-arrow-next'); }
-    slideMenuButtonPrev() { return cy.get('#n2-ss-6-arrow-previous'); }
-    newArrivalsSection() { return cy.get('.themify_builder_sub_row.sub_row_1-0-2'); }
+    private menuShopLink() { return cy.get('#menu-item-40'); }
+    private menuMyAccountLink() { return cy.get('#menu-item-50'); }
+    private menuTestCasesLink() { return cy.get('#menu-item-224'); }
+    private menuAtSitesLink() { return cy.get('#menu-item-244'); }
+    private menuDemoSitesLink() { return cy.get('#menu-item-251'); }
+    private menuCartLink() { return cy.get('#wpmenucartli'); }
+    private slideMenu() { return cy.get('.n2-ss-slider-3'); }
+    private slideMenuButtonNext() { return cy.get('#n2-ss-6-arrow-next'); }
+    private slideMenuButtonPrev() { return cy.get('#n2-ss-6-arrow-previous'); }
+    private newArrivalsSection() { return cy.get('.themify_builder_sub_row.sub_row_1-0-2'); }
 
     clickShopMenu(): void {
         this.menuShopLink().click();
@@ -18,15 +18,15 @@ export class HomePage {
         this.menuMyAccountLink().click();
     }
 
-    getAllSlides() {
+    getAllSlides():Cypress.Chainable {
         return this.slideMenu().find('>div');
     }
 
-    getAllNewArrivals() {
+    getAllNewArrivals():Cypress.Chainable {
         return this.newArrivalsSection().find('>div');
     }
 
-    getOneImageInArrivals(n: number) {
+    getOneImageInArrivals(n: number):Cypress.Chainable {
         if (n > 0 && n < 4) {
             return this.newArrivalsSection().find(`>div:nth-child(${n})`);
         } else {
