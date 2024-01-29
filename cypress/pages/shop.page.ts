@@ -1,52 +1,45 @@
-
 export class ShopPage {
     private inicialX:number = 0;
     private finalX:number = 300;
-    navigationHome() { return cy.get('.woocommerce-breadcrumb a[href="https://practice.automationtesting.in"]'); }
+    private productsOnSaleLocator = 'ins .woocommerce-Price-amount'
+    private productsNotOnSaleLocator = '.price>span'
+    navigationHome() {return cy.get('.woocommerce-breadcrumb a[href="https://practice.automationtesting.in"]'); }
     fromFilterPrice(){return cy.get('.price_slider>span:nth-child(2)', {log:false})}
     toFilterPrice(){return cy.get('.price_slider>span:nth-child(3)', {log:false})}
     filterButton(){return cy.get('.price_slider_amount > .button')}
     fromPriceLabel(){return cy.get('.from')}
     toPriceLabel(){return cy.get('.to')}
-    priceProductsOnsale(){return cy.get('ins .woocommerce-Price-amount')}
-    priceProductsNotOnSale(){return cy.get('.price>span')}
+    priceProductsOnsale(){ return cy.get(this.productsOnSaleLocator)}
+    priceProductsNotOnSale(){return cy.get(this.productsNotOnSaleLocator)}
 
     clickHome(): void {
         this.navigationHome().click();
     }
 
-    priceOfProductsMax(max:number):void{
-        if(this.priceProductsOnsale()){
-            this.priceProductsOnsale().each(($element, index)=>{
-                expect(parseFloat($element.text().slice(1))).to.be.at.most(max)
-            })              
-        }
-        if(this.priceProductsNotOnSale()){
-            this.priceProductsNotOnSale().each(($element, index)=>{
-                expect(parseFloat($element.text().slice(1))).to.be.at.most(max)
-            })
-        }
+    private assertPricesInRange(elements: Cypress.Chainable, min: number, max: number): void {
+        elements.each(($element, index) => {
+            const price = parseFloat($element.text().slice(1));
+            expect(price).to.be.at.least(min);
+            expect(price).to.be.at.most(max);
+        });
     }
 
-    priceOfProductsMin(min:number):void{
-        if(this.priceProductsOnsale()){
-            this.priceProductsOnsale().each(($element, index)=>{
-                expect(parseFloat($element.text().slice(1))).to.be.at.least(min);
-            })
-        }
-        if(this.priceProductsNotOnSale()){
-            this.priceProductsNotOnSale().each(($element, index)=>{
-                expect(parseFloat($element.text().slice(1))).to.be.at.least(min);
-            })
-        }
-    }
+    priceOfProductsInRange(min: number, max: number): void {
+        cy.get('body').then(($body) => {
+            const productsOnSaleExist = $body.find(this.productsOnSaleLocator).length > 0;
+            const productsNotOnSaleExist = $body.find(this.productsNotOnSaleLocator).length > 0;
+    
+            if (productsOnSaleExist) {
+                this.assertPricesInRange(this.priceProductsOnsale(), min, max);
+            }
+    
+            if (productsNotOnSaleExist) {
+                this.assertPricesInRange(this.priceProductsNotOnSale(), min, max);
+            }
+        });
+    }    
 
-    priceOfProductsBetween(max:number, min:number):void{
-        this.priceOfProductsMax(max);
-        this.priceOfProductsMin(min);
-    }
-
-    selectPriceFrom(from:number):void{
+    private selectPriceFrom(from:number):void{
         cy.get('.from',{log:false})
           .invoke({log:false}, 'text')
           .then((text: string) => {
@@ -67,7 +60,7 @@ export class ShopPage {
         })
     }
 
-    selectPriceTo(to:number):void{
+    private selectPriceTo(to:number):void{
         cy.get('.to', {log:false})
           .invoke({log:false}, 'text')
           .then((text: string) => {

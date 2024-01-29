@@ -8,7 +8,7 @@ export default defineConfig({
   viewportHeight: 768,
   defaultCommandTimeout: 8000,
   reporter: 'mochawesome',
-  retries: {openMode: 3, runMode: 4},
+  retries: {openMode: 0, runMode: 4},
   reporterOptions: {
     "reportDir": "cypress/results",
     "overwrite": false,

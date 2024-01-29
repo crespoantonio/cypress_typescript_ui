@@ -17,7 +17,6 @@ describe('SHOP', function () {
         shopPage.fromPriceLabel().should('include.text', from)
         shopPage.toPriceLabel().should('include.text', to);
         shopPage.clickFilterButton();
-        shopPage.priceOfProductsBetween(to, from);
+        shopPage.priceOfProductsInRange(from, to);
     });
 });
-  
