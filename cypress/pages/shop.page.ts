@@ -1,16 +1,16 @@
 export class ShopPage {
     private inicialX:number = 0;
     private finalX:number = 300;
-    private productsOnSaleLocator = 'ins .woocommerce-Price-amount'
-    private productsNotOnSaleLocator = '.price>span'
-    navigationHome() {return cy.get('.woocommerce-breadcrumb a[href="https://practice.automationtesting.in"]'); }
-    fromFilterPrice(){return cy.get('.price_slider>span:nth-child(2)', {log:false})}
-    toFilterPrice(){return cy.get('.price_slider>span:nth-child(3)', {log:false})}
-    filterButton(){return cy.get('.price_slider_amount > .button')}
-    fromPriceLabel(){return cy.get('.from')}
-    toPriceLabel(){return cy.get('.to')}
-    priceProductsOnsale(){ return cy.get(this.productsOnSaleLocator)}
-    priceProductsNotOnSale(){return cy.get(this.productsNotOnSaleLocator)}
+    private productsOnSaleLocator:string = 'ins .woocommerce-Price-amount'
+    private productsNotOnSaleLocator:string = '.price>span'
+    navigationHome(): Cypress.Chainable {return cy.get('.woocommerce-breadcrumb a[href="https://practice.automationtesting.in"]'); }
+    fromFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(2)', {log:false})}
+    toFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(3)', {log:false})}
+    filterButton(): Cypress.Chainable{return cy.get('.price_slider_amount > .button')}
+    fromPriceLabel(): Cypress.Chainable{return cy.get('.from')}
+    toPriceLabel(): Cypress.Chainable{return cy.get('.to')}
+    priceProductsOnsale(): Cypress.Chainable{ return cy.get(this.productsOnSaleLocator)}
+    priceProductsNotOnSale(): Cypress.Chainable{return cy.get(this.productsNotOnSaleLocator)}
 
     clickHome(): void {
         this.navigationHome().click();
@@ -52,7 +52,7 @@ export class ShopPage {
                 .trigger('mouseup', {log: false, force:true});
   
               // Adjust the moveX for the next iteration
-              this.inicialX = this.inicialX + 0.01;
+              this.inicialX += 0.01;
   
               // Recursive call to moveSliderAndCheckPrice
               this.selectPriceFrom(from);
@@ -73,7 +73,7 @@ export class ShopPage {
                 .trigger('mouseup', {log: false, force:true});
   
               // Adjust the moveX for the next iteration
-              this.finalX = this.finalX - 0.01;
+              this.finalX -= 0.01;
   
               // Recursive call to moveSliderAndCheckPrice
               this.selectPriceTo(to);
