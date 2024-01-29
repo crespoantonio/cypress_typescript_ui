@@ -10,7 +10,7 @@ describe('SHOP', function () {
     beforeEach(function () {
       cy.visit('/');
       homePage.clickShopMenu();
-    });
+    })
   
     it('Filter by price between 280 and 428', function () {
         shopPage.filterByPrice(from, to);
@@ -18,5 +18,12 @@ describe('SHOP', function () {
         shopPage.getToPriceLabel().should('include.text', to);
         shopPage.clickFilterButton();
         shopPage.priceOfProductsInRange(from, to);
-    });
-});
+    })
+    
+    it('Product category functionality', function(){
+      shopPage.getAllCategories().should('be.visible');
+      shopPage.selectOneCategory(2);
+      shopPage.getAllElementsOfPage().should('have.length', 3);
+      shopPage.getNavigation().should('include.text', 'JavaScript');
+    })
+})

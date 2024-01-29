@@ -3,7 +3,7 @@ export class ShopPage {
     private finalX:number = 300;
     private productsOnSaleLocator:string = 'ins .woocommerce-Price-amount'
     private productsNotOnSaleLocator:string = '.price>span'
-    private navigationHome(): Cypress.Chainable {return cy.get('.woocommerce-breadcrumb a[href="https://practice.automationtesting.in"]'); }
+    private navigation(): Cypress.Chainable {return cy.get('.woocommerce-breadcrumb'); }
     private fromFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(2)', {log:false})}
     private toFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(3)', {log:false})}
     private filterButton(): Cypress.Chainable{return cy.get('.price_slider_amount > .button')}
@@ -11,9 +11,27 @@ export class ShopPage {
     private toPriceLabel(): Cypress.Chainable{return cy.get('.to')}
     private priceProductsOnsale(): Cypress.Chainable{ return cy.get(this.productsOnSaleLocator)}
     private priceProductsNotOnSale(): Cypress.Chainable{return cy.get(this.productsNotOnSaleLocator)}
+    private productCategoryList(): Cypress.Chainable{return cy.get('.product-categories')}
+    private listOfProducstOnPage():Cypress.Chainable{return cy.get('.products.masonry-done > li')}
 
     clickHome(): void {
-        this.navigationHome().click();
+        this.navigation().find('a').click();
+    }
+
+    getNavigation():Cypress.Chainable{
+        return this.navigation();
+    }
+
+    getAllElementsOfPage():Cypress.Chainable{
+        return this.listOfProducstOnPage();
+    }
+
+    getAllCategories():Cypress.Chainable{
+        return this.productCategoryList();
+    }
+
+    selectOneCategory(category:number):void{
+        this.productCategoryList().find('a').eq(category).click();
     }
 
     getFromPriceLabel():Cypress.Chainable{

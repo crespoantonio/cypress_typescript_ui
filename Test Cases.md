@@ -94,13 +94,6 @@
 4) Click any of the product links available in the product category
 5) Now user can view only that particular product
 
-### Sale functionality
-1) Open the browser
-2) Enter the URL “http://practice.automationtesting.in/”
-3) Click on Shop Menu
-4) Click on Sale written product in home page
-5) User can clearly view the actual price with old price striken for the sale written products
-
 ## MY ACCOUNT
 ### Dashboard
 1) Open the browser
