@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-01-29T18:20:21.072Z",
+    "end": "2024-01-29T18:22:02.668Z",
+    "duration": 101596,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "491f8dc8-7cee-44f6-a3ee-152e3cffdb8a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\homePage.cy.ts",
+      "file": "cypress\\e2e\\homePage.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1ba77b8c-1625-4c53-b415-289712c93d57",
+          "title": "Home Page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Home page with three sliders only",
+              "fullTitle": "Home Page Home page with three sliders only",
+              "timedOut": null,
+              "duration": 18076,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "home_page_1.homePage.getAllSlides().should('have.length', 3);",
+              "err": {},
+              "uuid": "e776b842-f7fe-4722-a6b7-234b5127b44a",
+              "parentUUID": "1ba77b8c-1625-4c53-b415-289712c93d57",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Home page with three arrivals only",
+              "fullTitle": "Home Page Home page with three arrivals only",
+              "timedOut": null,
+              "duration": 12769,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "home_page_1.homePage.getAllNewArrivals().should('have.length', 3);",
+              "err": {},
+              "uuid": "6ed92b20-5703-4495-a5ec-3c5cb13bfd06",
+              "parentUUID": "1ba77b8c-1625-4c53-b415-289712c93d57",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Images in arrivals should navigate",
+              "fullTitle": "Home Page Images in arrivals should navigate",
+              "timedOut": null,
+              "duration": 9461,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var imageNumber = Math.floor(Math.random() * 3) + 1;\nhome_page_1.homePage.getAllNewArrivals().should('have.length', 3);\nhome_page_1.homePage.getOneImageInArrivals(imageNumber).click();\nproduct_page_1.productPage.getAddToBasketButton().should('exist');",
+              "err": {},
+              "uuid": "de27eaf0-7840-4f20-8ae9-5f2155a366ee",
+              "parentUUID": "1ba77b8c-1625-4c53-b415-289712c93d57",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e776b842-f7fe-4722-a6b7-234b5127b44a",
+            "6ed92b20-5703-4495-a5ec-3c5cb13bfd06",
+            "de27eaf0-7840-4f20-8ae9-5f2155a366ee"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 40306,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

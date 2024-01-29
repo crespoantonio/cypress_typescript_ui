@@ -14,8 +14,8 @@ describe('SHOP', function () {
   
     it('Filter by price between 280 and 428', function () {
         shopPage.filterByPrice(from, to);
-        shopPage.fromPriceLabel().should('include.text', from)
-        shopPage.toPriceLabel().should('include.text', to);
+        shopPage.getFromPriceLabel().should('include.text', from)
+        shopPage.getToPriceLabel().should('include.text', to);
         shopPage.clickFilterButton();
         shopPage.priceOfProductsInRange(from, to);
     });

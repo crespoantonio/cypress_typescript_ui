@@ -23,6 +23,6 @@ describe('Home Page', function() {
         const imageNumber: number = Math.floor(Math.random() * 3) + 1;
         homePage.getAllNewArrivals().should('have.length', 3);
         homePage.getOneImageInArrivals(imageNumber).click();
-        productPage.addToBasketButton().should('exist');
+        productPage.getAddToBasketButton().should('exist');
     });
 });

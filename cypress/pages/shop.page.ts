@@ -3,17 +3,25 @@ export class ShopPage {
     private finalX:number = 300;
     private productsOnSaleLocator:string = 'ins .woocommerce-Price-amount'
     private productsNotOnSaleLocator:string = '.price>span'
-    navigationHome(): Cypress.Chainable {return cy.get('.woocommerce-breadcrumb a[href="https://practice.automationtesting.in"]'); }
-    fromFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(2)', {log:false})}
-    toFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(3)', {log:false})}
-    filterButton(): Cypress.Chainable{return cy.get('.price_slider_amount > .button')}
-    fromPriceLabel(): Cypress.Chainable{return cy.get('.from')}
-    toPriceLabel(): Cypress.Chainable{return cy.get('.to')}
-    priceProductsOnsale(): Cypress.Chainable{ return cy.get(this.productsOnSaleLocator)}
-    priceProductsNotOnSale(): Cypress.Chainable{return cy.get(this.productsNotOnSaleLocator)}
+    private navigationHome(): Cypress.Chainable {return cy.get('.woocommerce-breadcrumb a[href="https://practice.automationtesting.in"]'); }
+    private fromFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(2)', {log:false})}
+    private toFilterPrice(): Cypress.Chainable{return cy.get('.price_slider>span:nth-child(3)', {log:false})}
+    private filterButton(): Cypress.Chainable{return cy.get('.price_slider_amount > .button')}
+    private fromPriceLabel(): Cypress.Chainable{return cy.get('.from')}
+    private toPriceLabel(): Cypress.Chainable{return cy.get('.to')}
+    private priceProductsOnsale(): Cypress.Chainable{ return cy.get(this.productsOnSaleLocator)}
+    private priceProductsNotOnSale(): Cypress.Chainable{return cy.get(this.productsNotOnSaleLocator)}
 
     clickHome(): void {
         this.navigationHome().click();
+    }
+
+    getFromPriceLabel():Cypress.Chainable{
+        return this.fromPriceLabel();
+    }
+
+    getToPriceLabel():Cypress.Chainable{
+        return this.toPriceLabel();
     }
 
     private assertPricesInRange(elements: Cypress.Chainable, min: number, max: number): void {

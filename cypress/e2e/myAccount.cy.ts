@@ -12,17 +12,17 @@ describe('MY ACCOUNT - LOGIN', function(){
     })
     it('Login with valid username and password',function(){
         myAccountPage.logIn(username, password);
-        myAccountPage.loginMessageWelcome().should('exist').and('include.text', 'tonytest');
+        myAccountPage.getLogInMesageWelcome().should('exist').and('include.text', 'tonytest');
     })
     it('Login with incorrect username and incorrect password', function(){
         myAccountPage.logIn('prueba', 'prueba');
-        myAccountPage.loginMessageWelcome().should('not.exist');
-        myAccountPage.messageError().should('exist').and('be.visible');
-        myAccountPage.loginSection().should('exist').and('be.visible');
+        myAccountPage.getLogInMesageWelcome().should('not.exist');
+        myAccountPage.getErrorMessage().should('exist').and('be.visible');
+        myAccountPage.getLoginSection().should('exist').and('be.visible');
     })
     it('Password should be masked', function(){
-        myAccountPage.usernameLabel().type(username);
-        myAccountPage.passwordLabel().type(password, {log:false});
-        myAccountPage.passwordLabel().should('have.attr', 'type', 'password');
+        myAccountPage.getUsernameLabel().type(username);
+        myAccountPage.getPasswordLabel().type(password, {log:false});
+        myAccountPage.getPasswordLabel().should('have.attr', 'type', 'password');
     })
 })

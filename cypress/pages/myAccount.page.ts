@@ -1,20 +1,40 @@
 export class MyAccountPage{
-    usernameLabel(){return cy.get('#username')}
-    passwordLabel(){return cy.get('#password')}
-    loginButton(){return cy.get('[name="login"]')}
-    loginMessageWelcome(){return cy.get('.woocommerce-MyAccount-content')}
-    messageError(){return cy.get('.woocommerce-error')}
-    loginSection(){return cy.get('.login')}
-    registerSection(){return cy.get('.register')}
-    registerEmailAddressLabel(){return cy.get('#reg_email')}
-    registerPasswordLabel(){return cy.get('#reg_password')}
-    registerButton(){return cy.get('[name="register"]')}
+    private usernameLabel(){return cy.get('#username')}
+    private passwordLabel(){return cy.get('#password')}
+    private loginButton(){return cy.get('[name="login"]')}
+    private loginMessageWelcome(){return cy.get('.woocommerce-MyAccount-content')}
+    private messageError(){return cy.get('.woocommerce-error')}
+    private loginSection(){return cy.get('.login')}
+    private registerSection(){return cy.get('.register')}
+    private registerEmailAddressLabel(){return cy.get('#reg_email')}
+    private registerPasswordLabel(){return cy.get('#reg_password')}
+    private registerButton(){return cy.get('[name="register"]')}
 
 
     logIn(username:string, password:string):void{
         this.usernameLabel().type(username);
         this.passwordLabel().type(password, {log:false});
         this.loginButton().click();
+    }
+
+    getLogInMesageWelcome():Cypress.Chainable{
+        return this.loginMessageWelcome();
+    }
+
+    getLoginSection():Cypress.Chainable{
+        return this.loginSection();
+    }
+
+    getUsernameLabel():Cypress.Chainable{
+        return this.usernameLabel();
+    }
+
+    getPasswordLabel():Cypress.Chainable{
+        return this.passwordLabel();
+    }
+
+    getErrorMessage():Cypress.Chainable{
+        return this.messageError();
     }
 
     registerNewUser(username:string | null, password:string | null):void{
