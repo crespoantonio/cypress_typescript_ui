@@ -3,26 +3,38 @@
 import { homePage } from "../pages/home.page";
 import { myAccountPage } from "../pages/myAccount.page";
 
-describe('MY ACCOUNT - LOGIN', function(){
-    const username:string = Cypress.env('username');
-    const password:string = Cypress.env('password');
+describe('MY ACCOUNT', function(){
     beforeEach(function(){
         cy.visit('/');
         homePage.clickMyAccountMenu();
     })
-    it('Login with valid username and password',function(){
-        myAccountPage.logIn(username, password);
-        myAccountPage.getLogInMesageWelcome().should('exist').and('include.text', 'tonytest');
+    const username:string = Cypress.env('username');
+    const password:string = Cypress.env('password');
+    describe('MY ACCOUNT - LOGIN', function(){
+        it('Login with valid username and password',function(){
+            myAccountPage.logIn(username, password);
+            myAccountPage.getLogInMesageWelcome().should('exist').and('include.text', 'tonytest');
+        })
+        it('Login with incorrect username and incorrect password', function(){
+            myAccountPage.logIn('prueba', 'prueba');
+            myAccountPage.getLogInMesageWelcome().should('not.exist');
+            myAccountPage.getErrorMessage().should('exist').and('be.visible');
+            myAccountPage.getLoginSection().should('exist').and('be.visible');
+        })
+        it('Password should be masked', function(){
+            myAccountPage.getUsernameLabel().type(username);
+            myAccountPage.getPasswordLabel().type(password, {log:false});
+            myAccountPage.getPasswordLabel().should('have.attr', 'type', 'password');
+        })
     })
-    it('Login with incorrect username and incorrect password', function(){
-        myAccountPage.logIn('prueba', 'prueba');
-        myAccountPage.getLogInMesageWelcome().should('not.exist');
-        myAccountPage.getErrorMessage().should('exist').and('be.visible');
-        myAccountPage.getLoginSection().should('exist').and('be.visible');
-    })
-    it('Password should be masked', function(){
-        myAccountPage.getUsernameLabel().type(username);
-        myAccountPage.getPasswordLabel().type(password, {log:false});
-        myAccountPage.getPasswordLabel().should('have.attr', 'type', 'password');
+    
+    describe('MY ACCOUNT - DASHBOARD', function(){
+        it('Account details', function(){
+            myAccountPage.logIn(username, password);
+            myAccountPage.getLogInMesageWelcome().should('exist').and('include.text', 'tonytest');
+            myAccountPage.clickAccountDetailsLink();
+            cy.url().should('include', '/my-account/edit-account/');
+            myAccountPage.getPasswordChangeSection().should('have.text', 'Password Change');
+        })
     })
 })

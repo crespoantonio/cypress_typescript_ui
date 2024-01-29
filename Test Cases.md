@@ -94,17 +94,7 @@
 4) Click any of the product links available in the product category
 5) Now user can view only that particular product
 
-## MY ACCOUNT
-### Dashboard
-1) Open the browser
-2) Enter the URL “http://practice.automationtesting.in/”
-3) Click on My Account Menu
-4) Enter registered username in username textbox
-5) Enter password in password textbox
-6) Click on login button
-7) User must successfully login to the web page
-8) Click on Myaccount link which leads to Dashboard
-9) User must view Dashboard of the site
+## MY ACCOUNT - DASHBOARD
 
 ### Account details
 1) Open the browser
@@ -113,10 +103,8 @@
 4) Enter registered username in username textbox
 5) Enter password in password textbox
 6) Click on login button
-7) User must successfully login to the web page
-8) Click on Myaccount link
-9) Click on Account details
-10) User can view account details where he can change his pasword also.
+7) Click on Account details
+8) User can view account details where he can change his pasword also.
 
 ### Log out
 1) Open the browser
@@ -125,7 +113,5 @@
 4) Enter registered username in username textbox
 5) Enter password in password textbox
 6) Click on login button
-7) User must successfully login to the web page
-8) Click on My Account link
-9) Click on Logout button
-10) On clicking logout,User successfully comes out from the site
+7) Click on Logout button
+8) On clicking logout,User successfully comes out from the site
