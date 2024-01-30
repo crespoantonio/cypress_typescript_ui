@@ -11,12 +11,17 @@ export class MyAccountPage{
     private registerButton():Cypress.Chainable{return cy.get('[name="register"]')}
     private accountDetailsLink():Cypress.Chainable{return cy.contains('Account Details')}
     private passwordChangeTitle():Cypress.Chainable{return cy.get('fieldset>legend')}
+    private logoutButton():Cypress.Chainable {return cy.contains('Logout')}
 
 
     logIn(username:string, password:string):void{
         this.usernameLabel().type(username);
         this.passwordLabel().type(password, {log:false});
         this.loginButton().click();
+    }
+
+    clickLogoutButton():void{
+        this.logoutButton().click();
     }
 
     getPasswordChangeSection():Cypress.Chainable{

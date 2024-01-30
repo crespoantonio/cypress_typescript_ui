@@ -36,5 +36,13 @@ describe('MY ACCOUNT', function(){
             cy.url().should('include', '/my-account/edit-account/');
             myAccountPage.getPasswordChangeSection().should('have.text', 'Password Change');
         })
+
+        it.only('Log out',function(){
+            myAccountPage.logIn(username, password);
+            myAccountPage.getLogInMesageWelcome().should('exist').and('include.text', 'tonytest');
+            myAccountPage.clickLogoutButton();
+            myAccountPage.getLoginSection().should('exist').and('be.visible');
+            cy.url().should('include', '/my-account/');
+        })
     })
 })
