@@ -1,20 +1,35 @@
 export class MyAccountPage{
-    private usernameLabel(){return cy.get('#username')}
-    private passwordLabel(){return cy.get('#password')}
-    private loginButton(){return cy.get('[name="login"]')}
-    private loginMessageWelcome(){return cy.get('.woocommerce-MyAccount-content')}
-    private messageError(){return cy.get('.woocommerce-error')}
-    private loginSection(){return cy.get('.login')}
-    private registerSection(){return cy.get('.register')}
-    private registerEmailAddressLabel(){return cy.get('#reg_email')}
-    private registerPasswordLabel(){return cy.get('#reg_password')}
-    private registerButton(){return cy.get('[name="register"]')}
+    private usernameLabel():Cypress.Chainable{return cy.get('#username')}
+    private passwordLabel():Cypress.Chainable{return cy.get('#password')}
+    private loginButton():Cypress.Chainable{return cy.get('[name="login"]')}
+    private loginMessageWelcome():Cypress.Chainable{return cy.get('.woocommerce-MyAccount-content')}
+    private messageError():Cypress.Chainable{return cy.get('.woocommerce-error')}
+    private loginSection():Cypress.Chainable{return cy.get('.login')}
+    private registerSection():Cypress.Chainable{return cy.get('.register')}
+    private registerEmailAddressLabel():Cypress.Chainable{return cy.get('#reg_email')}
+    private registerPasswordLabel():Cypress.Chainable{return cy.get('#reg_password')}
+    private registerButton():Cypress.Chainable{return cy.get('[name="register"]')}
+    private accountDetailsLink():Cypress.Chainable{return cy.contains('Account Details')}
+    private passwordChangeTitle():Cypress.Chainable{return cy.get('fieldset>legend')}
+    private logoutButton():Cypress.Chainable {return cy.contains('Logout')}
 
 
     logIn(username:string, password:string):void{
         this.usernameLabel().type(username);
         this.passwordLabel().type(password, {log:false});
         this.loginButton().click();
+    }
+
+    clickLogoutButton():void{
+        this.logoutButton().click();
+    }
+
+    getPasswordChangeSection():Cypress.Chainable{
+        return this.passwordChangeTitle();
+    }
+
+    clickAccountDetailsLink():void{
+        this.accountDetailsLink().click();
     }
 
     getLogInMesageWelcome():Cypress.Chainable{
